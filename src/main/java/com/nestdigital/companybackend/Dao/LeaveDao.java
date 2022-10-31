@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 public interface LeaveDao extends CrudRepository<LeaveModel,Integer> {
-    @Query(value = "SELECT l.`id`, l.`applydate`, l.`date`, l.`emp_code`, l.`reason`, l.`type`,e.name FROM `leaves` l JOIN employee e ON e.emp_code=l.emp_code WHERE l.`emp_code`=:emp_code",nativeQuery = true)
+    @Query(value = "SELECT l.`id`, l.`applydate`, l.`date`, l.`emp_code`, l.`reason`, l.`type`,l.`status`,e.name FROM `leaves` l JOIN employee e ON e.emp_code=l.emp_code WHERE l.`emp_code`=:emp_code",nativeQuery = true)
     List<Map<String,String>> View(Integer emp_code);
 
-    @Query(value = "SELECT l.`id`, l.`applydate`, l.`date`, l.`emp_code`, l.`reason`, l.`type`,e.name FROM `leaves` l JOIN employee e ON e.emp_code=l.emp_code",nativeQuery = true)
+    @Query(value = "SELECT l.`id`, l.`applydate`, l.`date`, l.`emp_code`, l.`reason`, l.`type`,l.`status`,e.name FROM `leaves` l JOIN employee e ON e.emp_code=l.emp_code",nativeQuery = true)
     List<Map<String,String>> Post();
 
     @Modifying
