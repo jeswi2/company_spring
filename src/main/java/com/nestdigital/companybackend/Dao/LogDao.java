@@ -20,4 +20,8 @@ public interface LogDao extends CrudRepository<LogModel,Integer> {
 
     @Query(value="SELECT l.`id`, l.`emp_code`, l.`login_time`, l.`login_security_code`, l.`logout_time`, l.`logout_security_code`,e.name as emp_name,s1.name as login_sec_name, s2.name as logout_sec_name FROM `logs` l JOIN employee e JOIN security s1 JOIN security s2 ON l.emp_code = e.emp_code AND l.login_security_code = s1.security_code AND l.logout_security_code = s2.security_code  WHERE l.emp_code = :emp_code",nativeQuery = true)
     public List<Map<String,String>> viewLogByEmpId(Integer emp_code);
+
+
+    @Query(value ="SELECT * FROM `logs` WHERE `logout_security_code`=0",nativeQuery = true)
+    public List<LogModel> viewCheckIn();
 }

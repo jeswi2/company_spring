@@ -57,5 +57,9 @@ public class LogController {
         return (List<Map<String, String>>) logDao.viewLogByEmpId(logModel.getEmp_code());
     }
 
-
+    @CrossOrigin(origins = "*")
+    @GetMapping("/viewCheckIn")
+    public List<LogModel> viewCheckIn(){
+        return (List<LogModel>) logDao.viewCheckIn();
+    }
 }
